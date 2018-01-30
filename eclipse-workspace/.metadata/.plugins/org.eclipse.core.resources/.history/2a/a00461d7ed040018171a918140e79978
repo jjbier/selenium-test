@@ -1,0 +1,9 @@
+package es.mtp.webdriver.ejemplo1;
+
+public class Prueba1 {
+
+	public static void main (string[] args) {
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://calculadora.net");
+	}
+}

@@ -1,0 +1,37 @@
+package es.mtp.webdriver.ejemplo1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Prueba1 {
+
+	public static void main (String[] args) {
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://calculadora.net");
+		String baseUrl = "http://www.calculadora.net/";
+	    driver.get(baseUrl + "/");
+	    driver.findElement(By.xpath("//input[@value='2']")).click();
+	    driver.findElement(By.xpath("//input[@value='+']")).click();
+	    driver.findElement(By.xpath("//input[@value='2']")).click();
+	    driver.findElement(By.xpath("//input[@value='=']")).click();	
+	    
+	    if ("4" == driver.findElement(By.id("Display")).getAttribute("value") ){
+	    	System.out.println("Ok");
+	    }else {
+	    	System.out.println("Non OK");
+	    }
+	    
+	    driver.get(baseUrl + "/");
+	    driver.findElement(By.xpath("//input[@value='2']")).click();
+	    driver.findElement(By.xpath("//input[@value='+']")).click();
+	    driver.findElement(By.xpath("//input[@value='2']")).click();
+	    driver.findElement(By.xpath("//input[@value='=']")).click();	
+	    
+	    if ("5" == driver.findElement(By.id("Display")).getAttribute("value") ){
+	    	System.out.println("Ok");
+	    }else {
+	    	System.out.println("Non OK");
+	    }
+	}
+}

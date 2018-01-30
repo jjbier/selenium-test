@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/home/xabier/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2670980143.index
+3986206814.index
+2390882571.index
+1733454314.index
+507491745.index
+1659620560.index

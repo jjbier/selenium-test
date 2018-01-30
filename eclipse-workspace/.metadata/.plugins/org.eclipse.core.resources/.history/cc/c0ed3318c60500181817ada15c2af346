@@ -1,0 +1,62 @@
+package es.mtp.webdriver.ejemplo1;
+
+import static org.junit.Assert.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;;
+
+public class Prueba2 {
+	
+	static WebDriver driver = new ChromeDriver();
+	static String baseUrl = "http://www.calculadora.net";
+	
+	public static void main (String[] args) {
+		
+		CalculadoraTest2 calculadoraTest = new CalculadoraTest2(driver, baseUrl);
+		
+		String valA = "2";
+		String valB = "3";
+		
+		if (calculadoraTest.suma(valA, valB).equals("5")) {
+			System.out.println("Test ok");
+		} else {
+			System.out.println("Test nok");
+		}
+		
+		driver.findElement(By.id("Display")).sendKeys("value", "your value");
+		//driver.close();
+	}
+}
+class CalculadoraTest2 {
+	
+	WebDriver driver;
+	String baseUrl;
+	
+	public CalculadoraTest2(WebDriver driver, String baseUrl) {
+		
+		this.driver = driver;
+		this.baseUrl = baseUrl;
+	}
+	
+	public String suma(String valA, String valB) 
+	{
+	    driver.get(baseUrl + "/");
+	    driver.findElement(By.xpath("//input[@value='"+valA+"']")).click();
+	    driver.findElement(By.xpath("//input[@value='+']")).click();
+	    driver.findElement(By.xpath("//input[@value='"+valB+"']")).click();
+	    driver.findElement(By.xpath("//input[@value='=']")).click();
+	    return  driver.findElement(By.id("Display")).getAttribute("value");
+	}
+	
+	public String resta(String valA, String valB) 
+	{
+	    driver.get(baseUrl + "/");
+	    driver.findElement(By.xpath("//input[@value='"+valA+"']")).click();
+	    driver.findElement(By.xpath("//input[@value='-']")).click();
+	    driver.findElement(By.xpath("//input[@value='"+valB+"']")).click();
+	    driver.findElement(By.xpath("//input[@value='=']")).click();
+	    
+	    return driver.findElement(By.id("Display")).getAttribute("value");
+	}	
+}

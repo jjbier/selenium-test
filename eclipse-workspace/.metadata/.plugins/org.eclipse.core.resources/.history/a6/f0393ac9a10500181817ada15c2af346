@@ -1,0 +1,21 @@
+package es.mtp.webdriver.mantis;
+
+import org.openqa.selenium.WebDriver;
+
+public class ReportPage 
+{
+	WebDriver driver;
+	String baseUrl;
+	
+	public LoginPage(WebDriver driver, String baseUrl) 
+	{
+		this.driver = driver;
+		this.baseUrl = baseUrl;
+		
+	}
+	
+	public void openPage() 
+	{
+		driver.get(baseUrl + "/login_page.php");		
+	}	
+}

@@ -1,0 +1,49 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import es.mtp.webdriver.Calculadora;
+
+public class CalculadoraTest {
+
+	static WebDriver driver;
+	static String Url = "http://www.calculadora.net";
+	Calculadora calculadora;
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		
+		driver = new FirefoxDriver();
+		
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		calculadora = new Calculadora(driver, Url);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		calculadora = null;
+	}
+
+	@Test
+	public void sumaDosMasDosIguakACuatro() {
+		String resultado = calculadora.suma("2", "2");
+		
+		assertEquals(4, resultado);
+	}
+
+}

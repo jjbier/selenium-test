@@ -1,0 +1,39 @@
+package es.mtp.webdriver.mantis;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class LoginPage {
+	
+	WebDriver driver;
+	String baseUrl;
+	
+	public LoginPage(WebDriver driver, String baseUrl) 
+	{
+		this.driver = driver;
+		this.baseUrl = baseUrl;
+		
+	}
+	
+	public void addUsername(String username ) {
+		
+	    driver.findElement(By.id("username")).clear();
+	    driver.findElement(By.id("username")).sendKeys(username);
+	    
+	}
+	
+	public void addPassword(String password) {
+		
+	    driver.findElement(By.id("password")).clear();
+	    driver.findElement(By.id("password")).sendKeys(password);
+	    
+	}
+
+	public void checkChecks() {
+		
+		
+	}
+	
+	
+}

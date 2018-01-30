@@ -1,0 +1,14 @@
+package es.mtp.webdriver.ejemplo1;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Prueba2Mantis {
+
+	static WebDriver driver = new FirefoxDriver();
+	static String baseUrl = "http://tester.com.es/";
+	
+	public static void main(String args[]) {
+		
+	}
+}

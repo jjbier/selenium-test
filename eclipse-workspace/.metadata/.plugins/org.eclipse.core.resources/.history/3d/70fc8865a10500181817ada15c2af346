@@ -1,0 +1,28 @@
+package es.mtp.webdriver.mantis;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class LoginPage {
+	
+	WebDriver driver;
+	String baseUrl;
+	
+	public LoginPage(WebDriver driver, String baseUrl) 
+	{
+		this.driver = driver;
+		this.baseUrl = baseUrl;
+		
+	}
+	
+	public void addUser(String user ) {
+		
+		
+	}
+	
+	public void addPassword() {}
+
+	public void checkChecks() {}
+	
+	
+}

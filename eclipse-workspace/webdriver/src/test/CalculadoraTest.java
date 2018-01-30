@@ -1,0 +1,96 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.DataProvider;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import es.mtp.webdriver.Calculadora;
+
+public class CalculadoraTest {
+
+	static WebDriver driver;
+	static String Url = "http://www.calculadora.net";
+	Calculadora calculadora;
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/xabier/selenium-ide/chromedriver");
+		
+		// driver = new FirefoxDriver();
+		//DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--test-type");
+		
+
+		driver =  new ChromeDriver(chromeOptions);
+	}
+
+	@DataProvider
+	public static WebDriver[] provideDriver() {
+		
+		//DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--test-type");
+		
+	    return new WebDriver[] {
+	    		new FirefoxDriver(),
+	    		new ChromeDriver(chromeOptions)
+	    };
+	}
+	
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		driver.close();
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		calculadora = new Calculadora(driver, Url);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		calculadora = null;
+	}
+
+	@Test
+	public void sumaDosMasDosIgualACuatro() {
+		String resultado = calculadora.suma("2", "2");
+		
+		assertEquals("4", resultado);
+	}
+
+	@Test
+	public void sumaDosMasTresDistintoCuatro() {
+		String resultado = calculadora.suma("2", "3");
+		
+		assertNotEquals("4", resultado);
+	}
+	
+	@Test
+	public void restaDosMenosDosIgialACero() {
+		String resultado = calculadora.resta("2", "2");
+		
+		assertEquals("0", resultado);
+	}
+	
+
+	@Test
+	public void restaDosMenosTresDistintoCuatro() {
+		String resultado = calculadora.resta("2", "3");
+		
+		assertNotEquals("4", resultado);
+	}
+}
